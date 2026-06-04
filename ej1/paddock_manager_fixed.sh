@@ -22,10 +22,13 @@ case $ACCION in
     descatalogar)
         echo "Descatalogando productos y manifiestos de la escuderia:
         $PARAMETRO"
-        rm $DIR_MERCADERIA/$PARAMETRO*.txt
 
-        # Borrado del CSV
-        sed -i "/$PARAMETRO/d" $ARCHIVO_CSV
+        if [ -z "$PARAMETRO" ]; then
+        echo "Error: Debes especificar una escudería."
+         exit 1
+        fi
+
+        rm -- "$DIR_MERCADERIA/${PARAMETRO}"*.txt
         echo "Operacion finalizada."
         ;;
 
