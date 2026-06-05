@@ -46,6 +46,7 @@ void* cocinero(void* arg){
 
         sem_post(&mutexBarra);
         sem_post(&semBarraLlena);
+        sleep(2);
     }
 
     return NULL;
@@ -67,7 +68,7 @@ void* mozo(void* arg){
 
         platosEnBarra--;
         retirar(id);
-        printf("Mozo %d está entregando el plato\n", id);
+        printf("Mozo %d está entregando el plato número %d\n", id, platosEntregados+1);
         platosEntregados++;
         sem_post(&mutexBarra);
         sem_post(&semBarraVacia);
