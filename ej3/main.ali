@@ -1,0 +1,263 @@
+V "GNAT Lib v13"
+M P W=b
+P SS ZX
+
+RN
+RV NO_DELAY
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FIXED_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_RELATIVE_DELAY
+RV NO_SECONDARY_STACK
+RV NO_SELECT_STATEMENTS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLICIT_LOOPS
+RV MAX_SELECT_ALTERNATIVES=4
+RV MAX_TASK_ENTRIES=4
+RV MAX_TASKS=1+
+
+U main%b		main.adb		613378e4 NE OO SU
+W ada%s			ada.ads			ada.ali
+Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+Z ada.real_time%s	a-reatim.adb		a-reatim.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z system%s		system.ads		system.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.img_int%s	s-imgint.ads		s-imgint.ali
+Z system.parameters%s	s-parame.adb		s-parame.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+D ada.ads		20240521074738 76789da1 ada%s
+D a-assert.ads		20240521074737 ba465f5c ada.assertions%s
+D a-calend.ads		20251218205951 e6961b4c ada.calendar%s
+D a-caldel.ads		20240521074737 9f20b83d ada.calendar.delays%s
+D a-except.ads		20240521074738 2a7d8d70 ada.exceptions%s
+D a-finali.ads		20240521074738 bf4f806b ada.finalization%s
+D a-ioexce.ads		20240521074738 40018c65 ada.io_exceptions%s
+D a-numeri.ads		20240521074738 84bea7a3 ada.numerics%s
+D a-nubinu.ads		20240521074738 93f1f3d1 ada.numerics.big_numbers%s
+D a-nbnbig.ads		20240521074738 711e0174 ada.numerics.big_numbers.big_integers_ghost%s
+D a-reatim.ads		20240521074737 b89a10c3 ada.real_time%s
+D a-stream.ads		20240521074738 119b8fb3 ada.streams%s
+D a-string.ads		20240521074738 90ac6797 ada.strings%s
+D a-sttebu.ads		20240521074738 f1ad67a2 ada.strings.text_buffers%s
+D a-stuten.ads		20240521074738 c6ced0ae ada.strings.utf_encoding%s
+D a-tags.ads		20240521074738 9eaa38c6 ada.tags%s
+D a-textio.ads		20240521074738 5c2c6153 ada.text_io%s
+D a-unccon.ads		20240521074738 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20240521074738 15f799c2 interfaces%s
+D i-c.ads		20240521074738 5c5a6c17 interfaces.c%s
+D i-cstrea.ads		20240521074738 e53d8b8e interfaces.c_streams%s
+D main.adb		20260621205705 3d1f19b7 main%b
+D system.ads		20240521074738 426dafb8 system%s
+D s-atacco.ads		20240521074738 903317eb system.address_to_access_conversions%s
+D s-assert.ads		20240521074738 9c4520c7 system.assertions%s
+D s-c_time.ads		20251218205951 535885c5 system.c_time%s
+D s-casuti.ads		20240521074738 cf13d755 system.case_util%s
+D s-conca2.ads		20240521074738 b5fb73f7 system.concat_2%s
+D s-crtl.ads		20240521074738 8a0692f8 system.crtl%s
+D s-exctab.ads		20240521074738 91bef6ef system.exception_table%s
+D s-ficobl.ads		20240521074738 dc5161d4 system.file_control_block%s
+D s-finroo.ads		20240521074738 4ff27390 system.finalization_root%s
+D s-imagei.ads		20240521074738 c707dfd0 system.image_i%s
+D s-imgint.ads		20240521074738 d4a52a9b system.img_int%s
+D s-linux.ads		20251218205951 96312dab system.linux%s
+D s-multip.ads		20240521074738 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20251218205951 ece202eb system.os_constants%s
+D s-osinte.ads		20251218205951 a8f58951 system.os_interface%s
+D s-parame.ads		20251218205951 1f39ba92 system.parameters%s
+D s-putima.ads		20240521074738 17291fe4 system.put_images%s
+D s-secsta.ads		20240521074738 578279f5 system.secondary_stack%s
+D s-soflin.ads		20240521074738 df77073e system.soft_links%s
+D s-stache.ads		20240521074738 0b81c1fe system.stack_checking%s
+D s-stausa.ads		20240521074738 5be75682 system.stack_usage%s
+D s-stalib.ads		20240521074738 1c9580f6 system.standard_library%s
+D s-stoele.ads		20240521074738 ab5468e4 system.storage_elements%s
+D s-stoele.adb		20240521074738 8f5a9db6 system.storage_elements%b
+D s-tasinf.ads		20240521074737 528dde74 system.task_info%s
+D s-taspri.ads		20240521074737 4ec891e7 system.task_primitives%s
+D s-taprop.ads		20240521074737 6eefbe12 system.task_primitives.operations%s
+D s-taskin.ads		20240521074737 0ec7ab0b system.tasking%s
+D s-taprob.ads		20240521074737 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20240521074737 60ad3dae system.tasking.protected_objects.entries%s
+D s-tasren.ads		20240521074737 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20240521074737 cca55c94 system.tasking.stages%s
+D s-traent.ads		20240521074738 c81cbf8c system.traceback_entries%s
+D s-unstyp.ads		20240521074738 fa2a7f59 system.unsigned_types%s
+D s-valint.ads		20240521074738 1f610d7a system.val_int%s
+D s-valuns.ads		20240521074738 e8a1f424 system.val_uns%s
+D s-valuti.ads		20240521074738 fcd603d8 system.val_util%s
+D s-valuei.ads		20240521074738 11081e09 system.value_i%s
+D s-vaispe.ads		20240521074738 44130d39 system.value_i_spec%s
+D s-valueu.ads		20240521074738 18770347 system.value_u%s
+D s-vauspe.ads		20240521074738 a67b2f28 system.value_u_spec%s
+D s-wchcon.ads		20240521074738 d9032363 system.wch_con%s
+D s-widuns.ads		20240521074738 866a5800 system.wid_uns%s
+D s-widthu.ads		20240521074738 b32f15e2 system.width_u%s
+G a e
+G c Z b b [main standard 3 11 none]
+X 1 ada.ads
+16K9*Ada 20e8 22|1r6 1r23
+X 17 a-textio.ads
+58K13*Text_IO 787e16 22|1w10 1r27
+488U14*Get_Immediate 22|388s7
+519U14*Put 22|59s16 60s16
+566U14*Put_Line 22|70s22 364s7 374s4 432s4 435s7 437s7
+X 22 main.adb
+3U11*Main 3b11 439l5 439t9
+5i4 Dim_X{integer} 14r43 64r43 146r45 371r25 398r46
+6i4 Dim_Y{integer} 15r40 311r31 327r36
+8i4 Nave_Ancho{integer} 146r27 157r56 398r29
+9i4 Nave_Alto{integer} 158r56
+11i4 Cantidad_Naves{integer} 93r32 212r24
+12i4 Cantidad_Balas{integer} 300r24
+14I12 Columnas{integer} 17r33 33r22 50r24 50r48 66r31
+15I12 Filas{integer} 17r26 32r19 51r24 51r45 62r25
+17A9 Screen(character)<integer><integer> 27r16
+19t9 Pantalla 26b14 83l8 83t16 304r7 305r7 306r7 307r7 313r7 314r7 315r7
+. 316r7 321r7 343r7 362r7 430r4
+20Y13 Limpiar 44b20 46l17 46t24 343s16
+21Y13 Set_Pixel 21>24 21>37 21>50 49b20 55l17 55t26 304s16 305s16 306s16
+. 307s16 313s16 314s16 315s16 316s16 321s16
+21i24 X{integer} 50r19 50r43 53r30
+21i37 Y{integer} 51r19 51r40 53r27
+21e50 Simbolo{character} 53r36
+22Y13 Dibujar 58b20 73l17 73t24 362s16
+23Y13 Apagar 76b20 78l17 78t23 430s13
+27a7 Buffer{17A9} 34m16 53m19 67r38
+28b7 Terminar{boolean} 77m16 81r20
+30U17 Vaciar 30b17 37l11 37t17 40s7 45s16
+32i14 Y{15I12} 34r24
+33i17 X{14I12} 34r27
+49i31 X{integer}
+49i44 Y{integer}
+49e57 Simbolo{character}
+62i20 Y{15I12} 67r46
+64a22 Linea{string} 67m25 70r32
+66i26 X{14I12} 67r32 67r49
+85t9 Motor 92b14 122l8 122t13 197r13 363r7 414r7 429r4
+86Y13 Nave_Destruida 98b20 102l17 102t31 197s19
+87Y13 Consultar_Vivas 87<30 105b20 107l17 107t32 363s13
+87i30 Vivas{integer} 106m16 106r16
+88Y13 Consultar_Fin 88<28 110b20 112l17 112t30 414s13
+88b28 Termino{boolean} 111m16 111r16
+89Y13 Apagar 115b20 117l17 117t23 429s10
+93i7 Naves_Vivas{integer} 99r19 100m19 100r34 106r25 111r27
+94b7 Terminar{boolean} 116m16 120r20
+105i37 Vivas{integer}
+110b35 Termino{boolean}
+124T14 Nave 129l8 129e12 131b14 210l8 210t12 212r43
+125Y13 Configurar 125>25 125>43 125>56 162b14 166l11 166t21 383s20
+125i25 Numero{integer} 163r16
+125i43 X{integer} 164r19
+125i56 Y{integer} 165r19
+126Y13 Consultar 126<24 126<41 126<58 170b20 174l17 174t26 346s20
+126i24 X{integer} 171m16 171r16
+126i41 Y{integer} 172m16 172r16
+126b58 Viva{boolean} 173m16 173r16
+127Y13 Impactar 127>23 127>41 127<59 177b20 185l17 185t25 232s26
+127i23 Bala_X{integer} 178r33
+127i41 Bala_Y{integer} 178r41
+127b59 Hubo_Impacto{boolean} 180m19 180r19 183m19 183r19
+128Y13 Apagar 188b20 190l17 190t23 426s17
+132i7 ID{integer} 163m10
+133i7 Pos_X{integer} 144r16 146r19 150m13 150r22 157r23 157r48 164m10 171r21
+134i7 Pos_Y{integer} 158r23 158r48 165m10 172r21
+135b7 Esta_Viva{boolean} 143r13 156r17 173r24 179m19
+136i7 Direccion{integer} 145m16 147m16 150r30
+137b7 Terminar{boolean} 189m16 208r20
+138b7 Avisar_Destruccion{boolean} 181m19 196r13 198m13
+139i7 Ciclos_Movimiento{integer} 201m10 201r31 203r13 205m13
+141U17 Mover 141b17 152l11 152t16 204s13
+154V16 Hay_Colision{boolean} 154b16 154>30 154>48 159l11 159t23 178s19
+154i30 Bala_X{integer} 157r13 157r38
+154i48 Bala_Y{integer} 158r13 158r38
+162i26 Numero{integer}
+162i44 X{integer}
+162i57 Y{integer}
+170i31 X{integer}
+170i48 Y{integer}
+170b65 Viva{boolean}
+177i30 Bala_X{integer}
+177i48 Bala_Y{integer}
+177b66 Hubo_Impacto{boolean}
+212a4 Naves(124T14) 231r22 232r16 345r16 346r10 377r13 383r10 425r13 426r7
+214T14 Bala 218l8 218e12 220b14 298l8 298t12 300r43
+215Y13 Disparar 215>23 215>36 215<49 258b20 267l17 267t25 330s20
+215i23 X{integer} 262r28
+215i36 Y{integer} 263r28
+215b49 Aceptada{boolean} 260m19 260r19 265m19 265r19
+216Y13 Consultar 216<24 216<41 216<58 270b20 274l17 274t26 354s20
+216i24 X{integer} 271m16 271r16
+216i41 Y{integer} 272m16 272r16
+216b58 Activa{boolean} 273m16 273r16
+217Y13 Apagar 277b20 279l17 279t23 422s17
+221i7 Pos_X{integer} 232r36 262m19 271r21
+222i7 Pos_Y{integer} 232r43 245m13 245r22 247r16 263m19 272r21
+223b7 Esta_Activa{boolean} 230r13 235m19 244r13 248m16 259r19 264m19 273r26
+. 285r13
+224b7 Terminar{boolean} 278m16 296r20
+225i7 Ciclos_Movimiento{integer} 286m13 286r34 288r16 290m16 293m13
+227U17 Revisar_Colisiones 227b17 240l11 240t29 250s16
+228b10 Impacto{boolean} 232m50 234r19
+231i17 I{integer} 232r23
+242U17 Avanzar 242b17 253l11 253t18 289s16
+258i30 X{integer}
+258i43 Y{integer}
+258b56 Aceptada{boolean}
+270i31 X{integer}
+270i48 Y{integer}
+270b65 Activa{boolean}
+300a4 Balas(214T14) 329r16 330r10 353r16 354r10 421r13 422r7
+302U14 Dibujar_Nave 302b14 302>28 302>41 308l8 308t20 349s13
+302i28 X{integer} 304r27 305r27 306r27 307r27
+302i41 Y{integer} 304r34 305r34 306r34 307r34
+310U14 Dibujar_Canion 310b14 310>30 317l8 317t22 361s7
+310i30 X{integer} 313r27 314r27 315r27 316r27
+311i7 Y{integer} 313r34 314r34 315r34 316r34
+319U14 Dibujar_Bala 319b14 319>28 319>41 322l8 322t20 357s13
+319i28 X{integer} 321r27
+319i41 Y{integer} 321r30
+324U14 Disparar_Bala 324b14 324>29 334l8 334t21 403s16
+324i29 Canon_X{integer} 326r36
+325b7 Aceptada{boolean} 330m46 332r20
+326i7 Bala_X{integer} 330r30
+327i7 Bala_Y{integer} 330r38
+329i11 I{integer} 330r17
+336U14 Redibujar 336b14 336>25 365l8 365t17 413s7
+336i25 Canon_X{integer} 361r23
+337i7 X{integer} 346m31 349r27 354m31 357r27
+338i7 Y{integer} 346m34 349r30 354m34 357r30
+339i7 Vivas{integer} 363m30 364r53
+340b7 Viva{boolean} 346m37 348r13
+341b7 Activa{boolean} 354m37 356r13
+345i11 I{integer} 346r17
+353i11 I{integer} 354r17
+367e4 Movimiento{character} 388m22 391r15
+368b4 Hay_Movimiento{boolean} 388m34 390r10
+369b4 Continua{boolean} 406m16 416r21
+370b4 Juego_Terminado{boolean} 414m28 416r38 434r7
+371i4 Canon_X{integer} 393r19 394m19 394r30 398r19 399m19 399r30 403r31 413r18
+377i8 I{integer} 379r46 380r43 381r41 383r17 383r32
+379i10 Columna{integer} 383r35
+380i10 Fila{integer} 383r53
+381i10 Offset{integer} 383r45
+421i8 I{integer} 422r14
+425i8 I{integer} 426r14
+X 44 s-stausa.ads
+207U14*Initialize 208i<c,__gnat_stack_usage_initialize>22
+272U14*Output_Results 276i<c,__gnat_stack_usage_output_results>22
+
