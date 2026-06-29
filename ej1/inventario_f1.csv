@@ -1,0 +1,111 @@
+ID,Nombre_del_Producto,Escuderia,Stock,Precio
+1,Gorra Edicion Especial Monza,Ferrari,20,45
+2,Remera Oficial Roja,Ferrari,35,60
+3,Campera Softshell Ferrari,Ferrari,12,140
+4,Buzo Team Ferrari,Ferrari,18,95
+5,Llavero Cavallino,Ferrari,50,15
+6,Botella Termica Ferrari,Ferrari,25,32
+7,Bandera Ferrari,Ferrari,40,22
+8,Mochila Paddock Ferrari,Ferrari,10,85
+9,Poster Leclerc Hamilton,Ferrari,30,18
+10,Set Stickers Ferrari,Ferrari,60,10
+11,Gorra Negra Mercedes,Mercedes,28,42
+12,Remera Oficial Mercedes,Mercedes,32,58
+13,Campera Impermeable Mercedes,Mercedes,11,135
+14,Buzo Team Mercedes,Mercedes,16,92
+15,Llavero Estrella Mercedes,Mercedes,45,14
+16,Botella Termica Mercedes,Mercedes,22,30
+17,Bandera Mercedes,Mercedes,35,21
+18,Mochila Paddock Mercedes,Mercedes,9,82
+19,Poster Russell Antonelli,Mercedes,27,17
+20,Set Stickers Mercedes,Mercedes,55,10
+21,Gorra Papaya McLaren,McLaren,30,44
+22,Remera Oficial McLaren,McLaren,34,59
+23,Campera Softshell McLaren,McLaren,10,138
+24,Buzo Team McLaren,McLaren,17,94
+25,Llavero Speedmark McLaren,McLaren,48,14
+26,Botella Termica McLaren,McLaren,24,31
+27,Bandera McLaren,McLaren,38,21
+28,Mochila Paddock McLaren,McLaren,11,84
+29,Poster Norris Piastri,McLaren,29,18
+30,Set Stickers McLaren,McLaren,58,10
+31,Gorra Azul RedBull,RedBull,33,43
+32,Remera Oficial RedBull,RedBull,36,61
+33,Campera Impermeable RedBull,RedBull,13,142
+34,Buzo Team RedBull,RedBull,20,96
+35,Llavero Toro RedBull,RedBull,52,15
+36,Botella Termica RedBull,RedBull,26,32
+37,Bandera RedBull,RedBull,42,22
+38,Mochila Paddock RedBull,RedBull,12,86
+39,Poster Verstappen Hadjar,RedBull,31,18
+40,Set Stickers RedBull,RedBull,62,10
+41,Gorra Verde AstonMartin,AstonMartin,24,42
+42,Remera Oficial AstonMartin,AstonMartin,30,58
+43,Campera Softshell AstonMartin,AstonMartin,8,136
+44,Buzo Team AstonMartin,AstonMartin,15,91
+45,Llavero Alas AstonMartin,AstonMartin,40,14
+46,Botella Termica AstonMartin,AstonMartin,20,30
+47,Bandera AstonMartin,AstonMartin,34,21
+48,Mochila Paddock AstonMartin,AstonMartin,8,80
+49,Poster Alonso Stroll,AstonMartin,25,17
+50,Set Stickers AstonMartin,AstonMartin,50,10
+51,Gorra Azul Alpine,Alpine,22,40
+52,Remera Oficial Alpine,Alpine,28,56
+53,Campera Impermeable Alpine,Alpine,7,130
+54,Buzo Team Alpine,Alpine,14,88
+55,Llavero Alpine,Alpine,38,13
+56,Botella Termica Alpine,Alpine,18,29
+57,Bandera Alpine,Alpine,32,20
+58,Mochila Paddock Alpine,Alpine,7,78
+59,Poster Gasly Colapinto,Alpine,23,16
+60,Set Stickers Alpine,Alpine,48,9
+61,Gorra Blanca Haas,Haas,21,39
+62,Remera Oficial Haas,Haas,27,55
+63,Campera Softshell Haas,Haas,6,128
+64,Buzo Team Haas,Haas,13,86
+65,Llavero Haas,Haas,36,13
+66,Botella Termica Haas,Haas,17,28
+67,Bandera Haas,Haas,30,20
+68,Mochila Paddock Haas,Haas,6,76
+69,Poster Ocon Bearman,Haas,22,16
+70,Set Stickers Haas,Haas,46,9
+71,Gorra Azul Williams,Williams,26,41
+72,Remera Oficial Williams,Williams,31,57
+73,Campera Impermeable Williams,Williams,9,132
+74,Buzo Team Williams,Williams,15,89
+75,Llavero W Williams,Williams,42,14
+76,Botella Termica Williams,Williams,21,30
+77,Bandera Williams,Williams,33,21
+78,Mochila Paddock Williams,Williams,8,79
+79,Poster Albon Sainz,Williams,26,17
+80,Set Stickers Williams,Williams,52,10
+81,Gorra RacingBulls,RacingBulls,23,40
+82,Remera Oficial RacingBulls,RacingBulls,29,56
+83,Campera Softshell RacingBulls,RacingBulls,7,129
+84,Buzo Team RacingBulls,RacingBulls,14,87
+85,Llavero RacingBulls,RacingBulls,37,13
+86,Botella Termica RacingBulls,RacingBulls,18,29
+87,Bandera RacingBulls,RacingBulls,31,20
+88,Mochila Paddock RacingBulls,RacingBulls,7,77
+89,Poster Lawson Lindblad,RacingBulls,24,16
+90,Set Stickers RacingBulls,RacingBulls,49,9
+91,Gorra Gris Audi,Audi,25,42
+92,Remera Oficial Audi,Audi,30,58
+93,Campera Softshell Audi,Audi,9,134
+94,Buzo Team Audi,Audi,15,90
+95,Llavero Audi,Audi,41,14
+96,Botella Termica Audi,Audi,20,30
+97,Bandera Audi,Audi,33,21
+98,Mochila Paddock Audi,Audi,8,81
+99,Poster Hulkenberg Bortoleto,Audi,25,17
+100,Set Stickers Audi,Audi,51,10
+101,Gorra Cadillac,Cadillac,24,43
+102,Remera Oficial Cadillac,Cadillac,30,59
+103,Campera Softshell Cadillac,Cadillac,8,137
+104,Buzo Team Cadillac,Cadillac,14,92
+105,Llavero Cadillac,Cadillac,39,14
+106,Botella Termica Cadillac,Cadillac,19,31
+107,Bandera Cadillac,Cadillac,32,21
+108,Mochila Paddock Cadillac,Cadillac,7,83
+109,Poster Perez Bottas,Cadillac,24,17
+110,Set Stickers Cadillac,Cadillac,50,10

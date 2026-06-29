@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SO Manager</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef2f5;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #64748b;
+      --line: #d9e1e8;
+      --ok: #13795b;
+      --warn: #b45309;
+      --bad: #b42318;
+      --blue: #2563eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .timestamp {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    main {
+      padding: 28px 0 36px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .summary-item,
+    .service-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .summary-item {
+      padding: 14px 16px;
+    }
+
+    .summary-label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    .summary-value {
+      margin-top: 6px;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .service-card {
+      padding: 16px;
+    }
+
+    .service-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .service-name {
+      margin: 0 0 4px;
+      font-size: 20px;
+    }
+
+    .container-name {
+      color: var(--muted);
+      font-size: 13px;
+      word-break: break-word;
+    }
+
+    .badge {
+      min-width: 82px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .badge.running {
+      background: var(--ok);
+    }
+
+    .badge.stopped {
+      background: var(--bad);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .metric-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .bar {
+      height: 8px;
+      margin-top: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e6edf3;
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: var(--blue);
+      transition: width 200ms ease;
+    }
+
+    .error {
+      display: none;
+      margin-bottom: 16px;
+      padding: 12px 14px;
+      border: 1px solid #f5c2c0;
+      border-radius: 8px;
+      color: var(--bad);
+      background: #fff4f2;
+    }
+
+    @media (max-width: 760px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 14px 0;
+      }
+
+      .summary,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .timestamp {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <h1>SO Manager</h1>
+      <div class="timestamp" id="updatedAt">Sin datos</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="error" id="errorBox"></div>
+
+    <section class="summary" aria-label="Resumen">
+      <div class="summary-item">
+        <div class="summary-label">Runners activos</div>
+        <div class="summary-value" id="activeRunners">0/3</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">CPU total</div>
+        <div class="summary-value" id="totalCpu">0%</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Memoria total</div>
+        <div class="summary-value" id="totalMemory">0 MB</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">HTTP</div>
+        <div class="summary-value">8080</div>
+      </div>
+    </section>
+
+    <section class="grid" id="services"></section>
+  </main>
+
+  <script>
+    const order = ["manager", "ej1", "ej2", "ej3"];
+    const labels = {
+      manager: "Manager",
+      ej1: "Runner Bash",
+      ej2: "Runner C",
+      ej3: "Runner ADA",
+    };
+
+    function bytes(value) {
+      if (!value) return "0 MB";
+      const units = ["B", "KB", "MB", "GB"];
+      let size = value;
+      let index = 0;
+
+      while (size >= 1024 && index < units.length - 1) {
+        size /= 1024;
+        index += 1;
+      }
+
+      return `${size.toFixed(index === 0 ? 0 : 1)} ${units[index]}`;
+    }
+
+    function pct(value) {
+      return `${Number(value || 0).toFixed(2)}%`;
+    }
+
+    function render(payload) {
+      const errorBox = document.getElementById("errorBox");
+      errorBox.style.display = payload.error ? "block" : "none";
+      errorBox.textContent = payload.error || "";
+
+      const updated = payload.updatedAt ? new Date(payload.updatedAt) : null;
+      document.getElementById("updatedAt").textContent = updated
+        ? `Actualizado ${updated.toLocaleTimeString()}`
+        : "Sin datos";
+
+      const containers = [...(payload.containers || [])].sort(
+        (a, b) => order.indexOf(a.service) - order.indexOf(b.service)
+      );
+      const runners = containers.filter((item) => item.service !== "manager");
+      const activeRunners = runners.filter((item) => item.running).length;
+      const totalCpu = containers.reduce((sum, item) => sum + Number(item.cpuPercent || 0), 0);
+      const totalMemory = containers.reduce((sum, item) => sum + Number(item.memory?.usageBytes || 0), 0);
+
+      document.getElementById("activeRunners").textContent = `${activeRunners}/3`;
+      document.getElementById("totalCpu").textContent = pct(totalCpu);
+      document.getElementById("totalMemory").textContent = bytes(totalMemory);
+
+      document.getElementById("services").innerHTML = containers.map((item) => {
+        const running = item.running;
+        const memoryPercent = Math.min(Number(item.memory?.percent || 0), 100);
+        const cpuWidth = Math.min(Number(item.cpuPercent || 0), 100);
+
+        return `
+          <article class="service-card">
+            <div class="service-head">
+              <div>
+                <h2 class="service-name">${labels[item.service] || item.service}</h2>
+                <div class="container-name">${item.name || item.service}</div>
+              </div>
+              <div class="badge ${running ? "running" : "stopped"}">${running ? "Activo" : "Inactivo"}</div>
+            </div>
+            <div class="metrics">
+              <div class="metric">
+                <div class="metric-label">CPU</div>
+                <div class="metric-value">${pct(item.cpuPercent)}</div>
+                <div class="bar"><span style="width: ${cpuWidth}%"></span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Memoria</div>
+                <div class="metric-value">${bytes(item.memory?.usageBytes)}</div>
+                <div class="bar"><span style="width: ${memoryPercent}%"></span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Red recibida</div>
+                <div class="metric-value">${bytes(item.network?.rxBytes)}</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Red enviada</div>
+                <div class="metric-value">${bytes(item.network?.txBytes)}</div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    async function refresh() {
+      try {
+        const response = await fetch(`/status.json?ts=${Date.now()}`, { cache: "no-store" });
+        render(await response.json());
+      } catch (error) {
+        render({ error: error.message, containers: [] });
+      }
+    }
+
+    refresh();
+    setInterval(refresh, 2000);
+  </script>
+</body>
+</html>

@@ -2,23 +2,53 @@ services:
   ej1:
     build:
       context: ./ej1
+    volumes:
+      - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
   ej2:
     build:
       context: ./ej2
     volumes:
       - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
   ej3:
     build:
       context: ./ej3
     volumes:
       - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
   manager:
     build:
       context: ./manager
     ports:
-      - "8080:80"
+      - "8080:8080"
     volumes:
-      - ./ssh/id_ed25519:/root/.ssh/id_ed25519:ro
+      - ./ssh/id_ed25519:/home/manager/.ssh/id_ed25519:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
     depends_on:
+      - ej1
       - ej2
       - ej3
