@@ -1,0 +1,24 @@
+services:
+  ej1:
+    build:
+      context: ./ej1
+  ej2:
+    build:
+      context: ./ej2
+    volumes:
+      - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+  ej3:
+    build:
+      context: ./ej3
+    volumes:
+      - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+  manager:
+    build:
+      context: ./manager
+    ports:
+      - "8080:80"
+    volumes:
+      - ./ssh/id_ed25519:/root/.ssh/id_ed25519:ro
+    depends_on:
+      - ej2
+      - ej3
