@@ -4,12 +4,14 @@
 
 La solucion empaqueta las aplicaciones de las partes 1, 2 y 3 en contenedores Docker independientes, y agrega un contenedor `manager` como unico punto de entrada operativo.
 
-El sistema final queda compuesto por exactamente cuatro contenedores:
+El sistema final queda compuesto por cuatro contenedores persistentes:
 
 - `ej1`: runner Bash para la gestion de inventario del paddock.
 - `ej2`: runner C para el ejercicio con hilos POSIX.
 - `ej3`: runner ADA para el ejercicio con tasks.
 - `manager`: contenedor de administracion, acceso SSH y panel web HTTP.
+
+Ademas, Compose ejecuta un servicio one-shot `ssh-init` antes de levantar los contenedores persistentes. Ese servicio genera las claves SSH locales en volumenes Docker y termina.
 
 El stack completo se levanta con:
 
@@ -154,34 +156,31 @@ sin especificar usuario ni puerto.
 
 ## Claves SSH
 
-La carpeta `ssh/` contiene los archivos necesarios para que el manager se autentique contra los runners:
-
-```text
-ssh/id_ed25519
-ssh/id_ed25519.pub
-ssh/authorized_keys
-```
-
-Uso de cada archivo:
-
-- `id_ed25519`: clave privada, montada solo en el manager.
-- `id_ed25519.pub`: clave publica generada a partir de la privada.
-- `authorized_keys`: clave publica autorizada, montada en los runners.
-
-La clave privada no deberia subirse a Git. Para regenerar las claves:
+Las claves SSH no se entregan en el repositorio. Se generan automaticamente al ejecutar:
 
 ```bash
-mkdir -p ssh
-ssh-keygen -t ed25519 -N "" -f ssh/id_ed25519
-cp ssh/id_ed25519.pub ssh/authorized_keys
+docker compose up --build
 ```
 
-En Windows PowerShell puede usarse:
+El servicio `ssh-init` crea una clave ED25519 en volumenes Docker locales:
 
-```powershell
-New-Item -ItemType Directory -Force ssh
-ssh-keygen -t ed25519 -N "" -f ssh\id_ed25519
-Copy-Item ssh\id_ed25519.pub ssh\authorized_keys -Force
+```text
+ssh_private
+ssh_authorized
+```
+
+Uso de cada volumen:
+
+- `ssh_private`: contiene `id_ed25519` e `id_ed25519.pub`; se monta solo en el manager y en modo solo lectura.
+- `ssh_authorized`: contiene `authorized_keys`; se monta en los runners y en modo solo lectura.
+
+De esta forma, cada maquina que levanta el proyecto obtiene sus propias claves y la clave privada no queda versionada ni copiada dentro de los runners.
+
+Para forzar una regeneracion completa de claves, se pueden borrar los volumenes del proyecto:
+
+```bash
+docker compose down -v
+docker compose up --build
 ```
 
 ## Panel web
@@ -389,4 +388,3 @@ Hay dos decisiones importantes que conviene explicar en la defensa:
 2. El manager monta el Docker socket en modo solo lectura para poder obtener metricas reales de contenedores sin agregar un quinto contenedor.
 
 El uso del socket de Docker es una decision funcional para cumplir el monitoreo real pedido por la letra. Aun asi, debe mencionarse como una superficie sensible y limitarse a consultas de estado y metricas.
-

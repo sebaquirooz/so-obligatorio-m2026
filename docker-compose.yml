@@ -1,9 +1,35 @@
 services:
+  ssh-init:
+    build:
+      context: ./manager
+    user: "0:0"
+    volumes:
+      - ssh_private:/keys/private
+      - ssh_authorized:/keys/authorized
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -eu
+        if [ ! -f /keys/private/id_ed25519 ]; then
+          ssh-keygen -t ed25519 -N "" -f /keys/private/id_ed25519 -C "so-obligatorio"
+        fi
+        cp /keys/private/id_ed25519.pub /keys/authorized/authorized_keys
+        chown 1000:1000 /keys/private/id_ed25519 /keys/private/id_ed25519.pub /keys/authorized/authorized_keys
+        chmod 600 /keys/private/id_ed25519
+        chmod 644 /keys/private/id_ed25519.pub /keys/authorized/authorized_keys
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
   ej1:
     build:
       context: ./ej1
+    depends_on:
+      ssh-init:
+        condition: service_completed_successfully
     volumes:
-      - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+      - ssh_authorized:/home/runner/.ssh:ro
     tmpfs:
       - /tmp
     cap_drop:
@@ -13,8 +39,11 @@ services:
   ej2:
     build:
       context: ./ej2
+    depends_on:
+      ssh-init:
+        condition: service_completed_successfully
     volumes:
-      - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+      - ssh_authorized:/home/runner/.ssh:ro
     read_only: true
     tmpfs:
       - /tmp
@@ -25,8 +54,11 @@ services:
   ej3:
     build:
       context: ./ej3
+    depends_on:
+      ssh-init:
+        condition: service_completed_successfully
     volumes:
-      - ./ssh/authorized_keys:/home/runner/.ssh/authorized_keys
+      - ssh_authorized:/home/runner/.ssh:ro
     read_only: true
     tmpfs:
       - /tmp
@@ -40,7 +72,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./ssh/id_ed25519:/home/manager/.ssh/id_ed25519:ro
+      - ssh_private:/run/ssh/private:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
     tmpfs:
       - /tmp
@@ -49,6 +81,15 @@ services:
     security_opt:
       - no-new-privileges:true
     depends_on:
-      - ej1
-      - ej2
-      - ej3
+      ssh-init:
+        condition: service_completed_successfully
+      ej1:
+        condition: service_started
+      ej2:
+        condition: service_started
+      ej3:
+        condition: service_started
+
+volumes:
+  ssh_private:
+  ssh_authorized:
